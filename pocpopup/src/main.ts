@@ -1,5 +1,5 @@
 export default document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-<h2 id="main-title">Shop Now</h2>
+<h2 id="main-title" class="color">Shop Now</h2>
 <div id="main-container">
 <div id="container">	
 	

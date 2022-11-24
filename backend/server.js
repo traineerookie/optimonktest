@@ -5,6 +5,9 @@ var juice = require("juice");
 var { Liquid } = require("liquidjs");
 
 const app = express();
+
+app.use("/static", express.static(path.join(__dirname, "public")));
+
 const port = process.env.PORT || 8080;
 
 var engine = new Liquid();
@@ -23,11 +26,13 @@ app.get("/user", (req, res) => {
   if (data.length > 0 && final) {
     let dataRes = { ...data[0], final };
     var engine = new Liquid();
-    let file = fs.readFileSync(path.join(__dirname, "/script.js")).toString();
+    let file = fs
+      .readFileSync(path.join(__dirname, "./public/script.js"))
+      .toString();
     let finalOutput = engine.parseAndRenderSync(file, {
       data: JSON.stringify(dataRes),
     });
-    res.contentType("application/text");
+    res.contentType("application/javascript");
     res.statusCode = 200;
     res.send(finalOutput);
   } else {

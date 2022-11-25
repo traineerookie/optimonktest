@@ -1,8 +1,9 @@
-module.exports = class CreateElement {
+export default class CreateElement {
+  typeinstance;
   constructor(tagname, data, props) {
     this.tagname = tagname;
     this.data = data;
-    this.createElement(props);
+    this.initElement(props);
   }
 
   checkElementType(props) {
@@ -10,32 +11,31 @@ module.exports = class CreateElement {
       case this.tagname === "link":
         return new LinkElement(props.href, props.rel, props.type, this.tagname);
       case this.tagname === "div":
-        return new ComponentElement(this.data, props.type, props.id);
+        return new ComponentElement(
+          this.data,
+          props.type,
+          props.id,
+          this.tagname
+        );
       default:
         break;
     }
   }
 
-  createElement(props) {
+  initElement(props) {
     let type = this.checkElementType(props);
-    let typeinstance;
+    // let typeinstance;
     if (type.componenttype === "link") {
-      typeinstance = type.addElementLink();
-      console.log(typeinstance);
+      this.typeinstance = type.addElementLink();
+      return this.typeinstance;
     }
-    // let link = document.createElement(this.tagname);
-    // link.href = "http://localhost:8080/static/style.css";
-    // link.rel = "stylesheet";
-    // link.type = "text/css";
-    // document.head.appendChild(link);
-    // link.addEventListener("load", () => {
-    //   let div = document.createElement("div");
-    //   div.innerHTML = this.#data.final;
-    //   div.id = "retainful-popup";
-    //   document.body.appendChild(div);
-    // });
+
+    if (type.componenttype === "div") {
+      this.typeinstance = type.addElementComponent();
+      return this.typeinstance;
+    }
   }
-};
+}
 
 class LinkElement {
   constructor(href, rel, type, componenttype) {
@@ -46,7 +46,7 @@ class LinkElement {
   }
 
   addElementLink() {
-    let link = global.document.createElement(this.tagname);
+    const link = document.createElement(this.componenttype);
     link.href = this.href;
     link.rel = this.rel;
     link.type = this.type;
@@ -56,14 +56,15 @@ class LinkElement {
 }
 
 class ComponentElement {
-  constructor(component, type, id) {
+  constructor(component, type, id, componenttype) {
     this.component = component;
     this.type = type;
     this.id = id;
+    this.componenttype = componenttype;
   }
 
   addElementComponent() {
-    let div = document.createElement("div");
+    let div = document.createElement(this.type);
     div.innerHTML = this.component;
     div.id = this.id;
     document.body.appendChild(div);

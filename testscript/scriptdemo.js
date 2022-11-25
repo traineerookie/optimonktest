@@ -1,5 +1,5 @@
 // const CreateElement = require("./package/Elements/CreateElement");
-import CreateElement from "./Elements/index.js";
+import CreateElement from "./Elements/CreateElement.js";
 class RetainfulPopUp {
   data;
   constructor() {

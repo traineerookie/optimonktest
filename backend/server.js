@@ -8,7 +8,7 @@ const app = express();
 
 app.use("/static", express.static(path.join(__dirname, "public")));
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8082;
 
 var engine = new Liquid();
 
@@ -27,7 +27,7 @@ app.get("/user", (req, res) => {
     let dataRes = { ...data[0], final };
     var engine = new Liquid();
     let file = fs
-      .readFileSync(path.join(__dirname, "./public/script.js"))
+      .readFileSync(path.join(__dirname, "./public/preload.js"))
       .toString();
     let finalOutput = engine.parseAndRenderSync(file, {
       data: JSON.stringify(dataRes),

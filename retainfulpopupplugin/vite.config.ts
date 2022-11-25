@@ -1,13 +1,14 @@
-import {defineConfig} from 'vite'
-import { resolve } from 'path'
+// import {defineConfig} from 'vite'
+// import { resolve } from 'path'
 
-export default defineConfig({
-    build:{
-        lib:{
-            entry: resolve(__dirname, 'src/main.ts'),
-            name: 'reatinfulpopup',
-            fileName: 'retainfulpopup',
-            formats:['es','cjs','umd']
-        }
-    }
-})
+// export default defineConfig({
+//     build:{
+//         lib:{
+//             entry: resolve(__dirname, 'src/main.ts'),
+//             name: 'reatinfulpopup',
+//             fileName: 'retainfulpopup',
+//             formats:['es','cjs','umd','iife']
+//         },
+
+//     }
+// })

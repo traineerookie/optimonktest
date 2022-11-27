@@ -1,12 +1,16 @@
-import Events from "./tracker";
+import Events from "./trigger";
 
-const {ButtonEvents,MouseEvents}= Events()
+const {SpecificClickEvents,MouseEventExitIntent}= Events()
 
-export default document.addEventListener('click',(e:any)=>{
+// Pointer events works both in mobile and desktop.
+export default document.addEventListener('DOMContentLoaded',(e:any)=>{
     // @ts-ignore
-    const button = new ButtonEvents(e.target!.nodeName)
-    console.log(e,button);
+    const button = new SpecificClickEvents('')
 
-    let m = new MouseEvents(true)    
+
+    let mxi = new MouseEventExitIntent()
+    
+    console.log(mxi.watch);
+    
     
 })

@@ -1,6 +1,6 @@
 import Events from "./trigger";
 
-const {SpecificClickEvents,MouseEventExitIntent,ScrollEvent}= Events()
+const {SpecificClickEvents,MouseEventExitIntent,ScrollEvent,InSecondEvent}= Events()
 
 // Pointer events works both in mobile and desktop.
 export default document.addEventListener('DOMContentLoaded',(_e:any)=>{
@@ -12,6 +12,9 @@ export default document.addEventListener('DOMContentLoaded',(_e:any)=>{
     
 
     const se = new ScrollEvent(20)
+
+
+    const inSecodsE = new InSecondEvent(2)
     
     
 })

@@ -1,6 +1,7 @@
 import SpecificClickEvents from "./specificevet";
 import MouseEventExitIntent from "./exitintentevent";
 import ScrollEvent from "./scrollevent"; 
+import InSecondEvent from './inseconds'
 
 /*
 
@@ -11,11 +12,12 @@ import ScrollEvent from "./scrollevent";
 -After x seconds
 
 */
-function Events(): { SpecificClickEvents: typeof SpecificClickEvents; MouseEventExitIntent: typeof MouseEventExitIntent; ScrollEvent: typeof ScrollEvent; } {
+function Events(): { SpecificClickEvents: typeof SpecificClickEvents; MouseEventExitIntent: typeof MouseEventExitIntent; ScrollEvent: typeof ScrollEvent; InSecondEvent:typeof InSecondEvent} {
     return {
         SpecificClickEvents,
         MouseEventExitIntent,
-        ScrollEvent
+        ScrollEvent,
+        InSecondEvent
     };
 }
 

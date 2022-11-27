@@ -10,21 +10,19 @@ export default class SpecificClickEvents implements IFSpecificClickEvents{
 
        switch (this.checkSelector(cssselector)) {
         case cssselector.startsWith('.'):
-            cssselector = cssselector.replace('.','')
             element.type='Collection'
-            element.nodeElement = document.getElementsByClassName(cssselector)
+            element.nodeElement = document.getElementsByClassName(cssselector.replace('.',''))
             break;
         case cssselector.startsWith('#'):
-            cssselector=cssselector.replace('#','')
             element.type='Element'
-            element.nodeElement  = document.getElementById(cssselector)!
+            element.nodeElement  = document.getElementById(cssselector.replace('#',''))!
             break;
         default:
             element.type='Collection'
             element.nodeElement  = document.getElementsByTagName(cssselector)!
             break;
        }
-        if (this.checkSelector(cssselector)) {
+        if (this.checkSelector(cssselector)) {            
             if (element.type==='Collection') {
                 Array.from(element.nodeElement!).map((e)=>{
                     this.eventListener(e as HTMLElement)

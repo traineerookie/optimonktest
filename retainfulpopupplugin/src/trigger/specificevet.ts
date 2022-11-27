@@ -55,6 +55,7 @@ type HTMLCollectionOfType={
     type:'Collection',
     nodeElement:HTMLCollectionOf<HTMLElement|Element>
 }
+
 type SpecificElementType={
     type:'Element',
     nodeElement:HTMLElement

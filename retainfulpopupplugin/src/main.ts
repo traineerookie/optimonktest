@@ -1,6 +1,6 @@
 import Events from "./trigger";
 
-const {SpecificClickEvents,MouseEventExitIntent}= Events()
+const {SpecificClickEvents,MouseEventExitIntent,ScrollEvent}= Events()
 
 // Pointer events works both in mobile and desktop.
 export default document.addEventListener('DOMContentLoaded',(_e:any)=>{
@@ -8,9 +8,10 @@ export default document.addEventListener('DOMContentLoaded',(_e:any)=>{
     const button = new SpecificClickEvents('#btn')
 
 
-    let mxi = new MouseEventExitIntent()
+    const mxi = new MouseEventExitIntent()
     
-    console.log(mxi.watch);
+
+    const se = new ScrollEvent(20)
     
     
 })

@@ -37,6 +37,8 @@ export default class SpecificClickEvents implements IFSpecificClickEvents{
         e.addEventListener('pointerdown',(_e:PointerEvent)=>{
                     this.selectorClicks.name=e.nodeName  
                     ++this.selectorClicks.time!;
+                    let modal = document.getElementById('retainful-popup')
+                    modal!.style.display='block'
                     console.log(this.selectorClicks);
         }) 
     }

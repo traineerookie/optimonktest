@@ -7,7 +7,10 @@ export default class MouseEventExitIntent implements IFMouseEventExitIntent{
 
     watchMouseCursorOut(){
             document.addEventListener('pointerout',(_e:PointerEvent)=>{
-                console.log('out');
+               let modal = document.getElementById('retainful-popup')
+               console.log('out');
+               
+               modal!.style.display='block'
                 this.updatAlert(true);
             })
     }
@@ -15,6 +18,8 @@ export default class MouseEventExitIntent implements IFMouseEventExitIntent{
     watchMouseCursorIn(){
             document.addEventListener('pointermove',(_e:PointerEvent)=>{
                 console.log('in');
+                let modal = document.getElementById('retainful-popup')
+                modal!.style.display='none'
                 this.updatAlert(false);
             })
     }

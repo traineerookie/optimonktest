@@ -28,16 +28,11 @@ export default document.addEventListener('DOMContentLoaded',async (_e:any)=>{
 
     if (typeof rules==='object') {
 
-        const rulesEngine:any = new Rules(rules.data,rules)
-
-        rulesEngine.validateRules();
+         rules = new Rules(rules.data,rules)
+         rules.validateRules()
     
     }else{
         console.warn('Popup not initialized');
         
     }
-    
-
-    
-    
 })

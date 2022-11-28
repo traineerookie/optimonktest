@@ -37,11 +37,9 @@ export default class Rules implements IFRules{
        if(this.data.id){                        
         this.data.events.map((e)=>{
             if (e.trigger==='exit-intent') {
-                console.log('exit-intent');
                 new MouseEventExitIntent()
             }
             if (e.trigger==='selector') {
-                console.log('selector');
                 new SpecificClickEvents(e.rules.activity)
             }
             if (e.trigger==='scroll-event') {

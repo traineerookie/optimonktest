@@ -108,6 +108,7 @@
     if (document.readyState === "complete") {
       let d = new RetainfulPopUp({{data}});
       d.init(d.data);
+      window.RetainfulPopUp= d;
     }
   })();
 

@@ -65,17 +65,17 @@ const db = [
       {
         id: 1,
         trigger: "exit-intent",
-        rules: [],
+        rules: {},
       },
       {
         id: 2,
         trigger: "selector",
-        rules: [
+        rules: 
           {
             type: "selector",
             activity: "body",
-          },
-        ],
+          }
+        ,
       },
     ],
   },

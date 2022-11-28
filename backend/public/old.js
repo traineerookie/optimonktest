@@ -13,8 +13,6 @@
       switch (true) {
         case this.tagname === "link":
           return new LinkElement(props.href, props.rel, props.type, this.tagname);
-        case this.tagname === "script":
-          return new ScriptElement(props.src, this.tagname);
         case this.tagname === "div":
           return new ComponentElement(
             this.data,
@@ -37,17 +35,6 @@
         this.typeinstance = type.addElementComponent();
         return this.typeinstance;
       }
-
-      if (type.componenttype === "script") {
-        this.typeinstance = type.addScriptElement();
-        return this.typeinstance;
-      }
-    }
-
-    appendElements(link, script, div) {
-      document.head.appendChild(link);
-      document.body.appendChild(script);
-      document.body.appendChild(div);
     }
   }
 
@@ -64,6 +51,7 @@
       link.href = this.href;
       link.rel = this.rel;
       link.type = this.type;
+      document.head.appendChild(link);
       return link;
     }
   }
@@ -80,21 +68,8 @@
       let div = document.createElement(this.type);
       div.innerHTML = this.component;
       div.id = this.id;
+      document.body.appendChild(div);
       return div;
-    }
-  }
-
-  class ScriptElement {
-    constructor(src, type, componenttype) {
-      this.src = src;
-      this.type = type;
-      this.componenttype = componenttype;
-    }
-
-    addScriptElement() {
-      let script = document.createElement("script");
-      script.setAttribute("src", this.src);
-      return script;
     }
   }
 
@@ -105,37 +80,25 @@
       this.data = data;
     }
 
-
     dataget() {
       return this.data;
     }
 
     init(data) {
       let linkfirst = new CreateElement("link", data.final, {
-        href: "http://localhost:8080/static/style.css",
+        href: "http://localhost:8082/static/style.css",
         rel: "stylesheet",
         type: "text/css",
       });
       if (linkfirst.typeinstance.nodeName === "LINK") {
         const link = linkfirst.typeinstance;
-        let script;
-        let divlast;
         link.onload = function () {
-          let scriptSecond = new CreateElement("script", {
-            src: "https://cdn.jsdelivr.net/gh/traineerookie/testcdnagain/retainfulpoupengine.iife.js",
+          new CreateElement("div", data.final, {
+            data: data.final,
+            type: "div",
+            id: "retainful-popup",
           });
-          script = scriptSecond.typeinstance;
-
-          script.onload = function () {
-            divlast = new CreateElement("div", data.final, {
-              data: data.final,
-              type: "div",
-              id: "retainful-popup",
-            }).typeinstance;
-          };
         };
-
-        linkfirst.appendElements(link, script, divlast);
       }
     }
   }
@@ -156,3 +119,4 @@
   // });
 
 })();
+
